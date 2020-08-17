@@ -8,6 +8,7 @@ class Player{
         this.player = createSprite( 200,200,50,50);
         this.player.visible = false;
         this.player.veliocityY = 1
+      
 
 
     }
@@ -42,6 +43,82 @@ class Player{
 
 
 
+    static getplayersFinished(){
+        database.ref("PlayersFinished").on("value", (data) => {
+           this.level = data.val();
+        });
+    }   
+
+    updateplayercount(count){
+
+        var playercountref = database.ref('/');
+            playercountref.update({
+            playerCount: count
+        });
+
+    }
+
+
+    updateplayer(count){
+
+        var playercountref = database.ref('/');
+            playercountref.update({
+            players: count
+        });
+
+    }
+
+    static updateplayersFinished(count){
+
+        var PlayersFinishedref = database.ref('/');
+             PlayersFinishedref.update({
+            PlayersFinished: count
+        });
+
+    }
+    
+
+    updateplayerinfo(){
+        var playerindex = "players/player" + this.index;
+        var playerindexref = database.ref(playerindex);
+        playerindexref.set({
+            name: this.name,
+            distance: this.player.x,
+            yposition: this.player.y
+        });
+
+
+    }
+
+    updateplayerrankinfo(playerrank){
+        var playerindex = "players/player" + this.index;
+        var playerindexref = database.ref(playerindex);
+        playerindexref.set({
+            distance: this.player.x,
+            name: this.name,
+            level: playerlevel
+            
+        });
+
+
+    }
+
+    static getallplayerinfo(){
+        var playerinforef = database.ref("players");
+        playerinforef.on("value", (data) => {
+            allplayers = data.val();
+
+          });
+
+
+    }    
+
+
+
+
 
 
 }
+
+
+

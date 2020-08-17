@@ -17,6 +17,18 @@ class Form{
             this.button.hide();
             player.giveImages();
             gameState = 1;  
+
+
+
+
+
+            
+            playercount++;
+            player.index = playercount;
+            player.updateplayerinfo();
+            player.updateplayercount(playercount);
+            
+           
             
 
         });
