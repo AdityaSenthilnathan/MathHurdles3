@@ -11,12 +11,12 @@ class Form{
         this.button.position(displayWidth/2- 50, displayHeight/2);
         
         this.button.mousePressed(()=>{
-            name = this.inputbox.value();
+            player.name = this.inputbox.value();
 
             this.inputbox.hide();
             this.button.hide();
             player.giveImages();
-            gameState = 1;  
+        
 
 
 
@@ -25,8 +25,10 @@ class Form{
             
             playercount++;
             player.index = playercount;
-            player.updateplayerinfo();
             player.updateplayercount(playercount);
+            player.updateplayerinfo();
+            
+            
             
            
             

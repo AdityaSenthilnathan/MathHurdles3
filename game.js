@@ -6,17 +6,17 @@ class Game{
     }
 
     start(){
-        if (gameState === 0){
+  
             //player = new Player();
             player.getPlayerCount();
             //form = new Form();
             form.display();
-        }
+        
         //image(img1, 50, 50);
 
   
 
-        if (playercount === 4){
+        if (playercount === 2){
 
             gameState = 1;
             this.updategameState(gameState);
@@ -39,8 +39,8 @@ class Game{
          }
          else{
               fill("blue");
-              xposition = allplayers[plr]["distance"];
-              yposition = allplayers[plr]["yposition"];
+              player.player.x = allplayers[plr]["distance"];
+              player.player.y = allplayers[plr]["yposition"];
               
        
           players[index].position.x = xposition;
@@ -76,14 +76,14 @@ class Game{
         
         
 
-        if (player.player.x > 3000){
+        if (player.player.x === 3000){
             
-            Player.rank += 1;
+            player.level++;
             strokeWeight(30);
-            Player.updateplayersFinished(Player.rank);
-            player.updateplayerrankinfo(Player.rank);
-            gameState = 2;
-            playerGameState = 2; 
+            player.updateplayerlevel();
+            //Player.updateplayersFinished(player.rank);
+            //player.updateplayerrankinfo(player.rank);
+           
         }
     }
     end(){

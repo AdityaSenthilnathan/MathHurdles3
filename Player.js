@@ -8,6 +8,7 @@ class Player{
         this.player = createSprite( 200,200,50,50);
         this.player.visible = false;
         this.player.veliocityY = 1
+        this.index = 0;
       
 
 
@@ -40,7 +41,17 @@ class Player{
 
     }
 
+    updateplayerlevel(){
+        var playerlevelref = database.ref("players/player" + this.index)
+     playerlevelref.update({
+           Level: this.level
+        
 
+     });
+
+
+
+    }
 
 
     static getplayersFinished(){
@@ -84,7 +95,8 @@ class Player{
         playerindexref.set({
             name: this.name,
             distance: this.player.x,
-            yposition: this.player.y
+            yposition: this.player.y,
+            Level: this.level
         });
 
 
