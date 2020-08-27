@@ -44,7 +44,13 @@ var randomNumber;
 
 function preload() {
   mario = loadAnimation("mario/mario1.png", "mario/mario2.png", "mario/mario3.png");
-  Hurdlespng = loadImage("Hurdle.png")
+  Hurdlespng = loadImage("Hurdle.png");
+
+  jump = loadSound('/jump.mp3');
+  gameOver = loadSound('/gameOver.wav');
+  stageClear = loadSound('/stageclear.wav');
+  point = loadSound('/point.mp3');
+  music = loadSound('/airtone_-_resonance.mp3');
 
 }
 
@@ -53,11 +59,6 @@ function preload() {
 function setup() {
   //textMode(CENTER);
 
-  jump = loadSound('/jump.mp3');
-  gameOver = loadSound('/gameOver.wav');
-  stageClear = loadSound('/stageclear.wav');
-  point = loadSound('/point.mp3');
-  music = loadSound('/airtone_-_resonance.mp3');
  // music2 = loadSound('/airtone_-_forgottenland.mp3');
   /*var rand1 = random(0,7);
   var rand1 = random(0,7);
