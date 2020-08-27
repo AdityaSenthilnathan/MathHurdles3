@@ -15,7 +15,7 @@ class Form{
 
             this.inputbox.hide();
             this.button.hide();
-            player.giveImages();
+
         
 
 
@@ -25,6 +25,7 @@ class Form{
             
             playercount++;
             player.index = playercount;
+            player.giveImages();
             player.updateplayercount(playercount);
             player.updateplayerinfo();
             

@@ -8,18 +8,21 @@ class Game{
     start(){
   
             //player = new Player();
-            player.getPlayerCount();
+            player.getplayercount();
             //form = new Form();
             form.display();
-        
+       // text("forgottenland by airtone (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. http://dig.ccmixter.org/files/airtone/61959 ",250 , 720)
         //image(img1, 50, 50);
 
   
+       
+    
 
         if (playercount === 2){
 
             gameState = 1;
             this.updategameState(gameState);
+           // music2.stop();
 
         }
 
@@ -27,28 +30,48 @@ class Game{
     }
 
     play(){
-     
+        if (music.isPlaying()) {
+          
+          } else {
+            music.play();
+           
+          }
+      
         Player.getallplayerinfo();
-        Player.getplayersFinished();
+       // Player.getplayersFinished();
+       if(allplayers != undefined){
 
-         index = 0;
+       for(var index = 1; index < 3; index++){
 
-        for(var plr in allplayers){
+        if (player.index != index){
+          //var playerindex = window["player" + index];
+          var playerindex = [];
+          playerindex[0] = allplayers.player1
+          playerindex[1] = allplayers.player2
+           
+          player.player[index].x = playerindex[index - 1].distance;
+          player.player[index].y = playerindex[index - 1].yposition;
+      
+        }
+      }
+    }
+
+       /* for(var plr in allplayers){
              if (plr === "player" + player.index){
               fill("red");
          }
          else{
               fill("blue");
-              player.player.x = allplayers[plr]["distance"];
-              player.player.y = allplayers[plr]["yposition"];
+              player.player[player.index].x = allplayers[plr]["distance"];
+              player.player[player.index].y = allplayers[plr]["yposition"];
               
        
-          players[index].position.x = xposition;
+          //players[index].position.x = xposition;
           //players[index].y = yposition;
          }
         
           index = index + 1;
-        
+        */
         /*  if (index === player.index){
               cars[index - 1].shapeColor = "red";
               camera.position.x =  cars[index - 1].y
@@ -56,8 +79,8 @@ class Game{
               
 
 
-          }*/
-        }
+          }
+        }*/
         /*if(player.index != null && person != null){
         for (var i = 0; i < hurdles.sprites.length; i++) {
             if (person.isTouching(hurdles.sprites[i])){
@@ -67,16 +90,16 @@ class Game{
         }
     }*/
 
-        for (var i = 0; i < 4; i++){
+       /* for (var i = 0; i < 4; i++){
             index = index + 1;
             
             
-        }
+        }*/
 
         
         
 
-        if (player.player.x === 3000){
+        if (player.player[player.index].x === 3000){
             
             player.level++;
             strokeWeight(30);

@@ -5,31 +5,37 @@ class Player{
         this.hurdlesPassed = 0;
         this.distance = 0;
         this.level = 0;
-        this.player = createSprite( 200,200,50,50);
+        this.player = []
+        this.player1 = createSprite( 200,200,50,50);
+        this.player2 = createSprite( 200,400,50,50);
+        this.player[0] = this.player1;
+        this.player[1] = this.player1;
+        this.player[2] = this.player2;
         this.player.visible = false;
         this.player.veliocityY = 1
-        this.index = 0;
+        this.index = 1;
       
 
 
     }
 
     giveImages(){
-        this.player.visible = true;
-        this.player.addAnimation("mario", mario);
-        this.player.scale = 0.5;
-
+     
+        this.player[this.index].visible = true;
+        this.player[this.index].addAnimation("mario", mario);
+        this.player[this.index].scale = 0.5;
+        
 
 
     }
 
-    getPlayerCount(){
-        var playecountref = database.ref("PlayerCount");
-        playecountref.on("value",(data)=>{
+    getplayercount(){
+        var playecountref = database.ref("playerCount");
+        playecountref.on("value", (data) => {
 
             playercount = data.val();
 
-        })
+        });
 
 
     }
@@ -51,14 +57,14 @@ class Player{
 
 
 
-    }
+    }   
 
 
-    static getplayersFinished(){
+   /* static getplayersFinished(){
         database.ref("PlayersFinished").on("value", (data) => {
            this.level = data.val();
         });
-    }   
+    }  */ 
 
     updateplayercount(count){
 
@@ -70,7 +76,7 @@ class Player{
     }
 
 
-    updateplayer(count){
+  /*  updateplayer(count){
 
         var playercountref = database.ref('/');
             playercountref.update({
@@ -87,22 +93,22 @@ class Player{
         });
 
     }
-    
+    */
 
     updateplayerinfo(){
         var playerindex = "players/player" + this.index;
         var playerindexref = database.ref(playerindex);
         playerindexref.set({
             name: this.name,
-            distance: this.player.x,
-            yposition: this.player.y,
+            distance: this.player[this.index].x,
+            yposition: this.player[this.index].y,
             Level: this.level
         });
 
 
     }
 
-    updateplayerrankinfo(playerrank){
+    /*updateplayerrankinfo(playerrank){
         var playerindex = "players/player" + this.index;
         var playerindexref = database.ref(playerindex);
         playerindexref.set({
@@ -113,7 +119,7 @@ class Player{
         });
 
 
-    }
+    }*/
 
     static getallplayerinfo(){
         var playerinforef = database.ref("players");
