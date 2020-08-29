@@ -9,6 +9,7 @@ var textsNumber2 = [];
 var textsNumber = [];
 
 var form;
+
 var over = 0;
 var player;
 var check = 0;
@@ -43,7 +44,7 @@ var game;
 var randomNumber;
 
 function preload() {
-  mario = loadAnimation("images/mario/mario1.png", "mario/mario2.png", "mario/mario3.png");
+  mario = loadAnimation("images/mario/mario1.png", "images/mario/mario2.png", "images/mario/mario3.png");
   Hurdlespng = loadImage("images/Hurdle.png");
 
   jump = loadSound('music/jump.mp3');
@@ -66,8 +67,8 @@ function setup() {
 
 
   database = firebase.database();
-  ground = createSprite(5000, 240, 10000, 1);
-  ground2 = createSprite(5000, 440, 10000, 1);
+  ground = createSprite(5000, 240, 100000, 1);
+  ground2 = createSprite(5000, 440, 100000, 1);
 
 // for numbers and text
   for (var k = 0; k < 10; k++) {
@@ -140,18 +141,17 @@ function draw() {
 
   if (gameState === 1) {
     if (flag === 0) {
-      for (var c = 0; c < 3; c++) {
+      for (var c = 0; c < 5; c++) {
 
         hurdle[c] = new Hurdles((c * 3000) + 500);
         hurdle[c].createHurdles();
-
+       
 
       }
       flag = 1
     }
-    for (var c = 0; c < 3; c++) {
-      hurdle[c].createtext((c * 3000) + 500);
-    
+    for (var c = 0; c < 5; c++) {
+    hurdle[c].createtext();
     }
     game.play();
     textSize(20);
@@ -185,16 +185,25 @@ function draw() {
 
         for (var a = 0; a < hurdle[b].hurdles1.length; a++) {
           if (player.player[player.index].isTouching(hurdle[b].hurdles1) && textsNumber[a] != 17) {
-            if (over === 0) {
-              music.stop();
-              gameOver.play();
              
-              over = 1;
-            }
+
+            if (player.life === 0 ){
+              if (over === 0) {
+                music.stop();
+                gameOver.play();
+               
+                over = 1;
+              }
+
             out = "true"
             player.player[player.index].velocityX = 0;
             text("Wrong, the correct answer to " + texts[a] + " is: " + textsNumber[a] + ", not 17", player.player[player.index].x + 200, 100);
-
+            
+            }
+            else{
+              player.life = player.life - 1;
+              //respawn();
+            }
           }
           if (player.player[player.index].isTouching(hurdle[b].hurdles1) && textsNumber[a] === 17 && hurdle[b].hurdles1.x === player.player[player.index].x) {
             //speed = speed + 1;
@@ -250,6 +259,45 @@ function keyPressed() {
  
      }*/
   }
+
+
+}
+
+function respawn(){
+
+
+
+
+
+switch(player.level){
+  case 1:
+          player.player[player.index].x = 0;
+          player.player[player.index].velocityX = 0;
+          break;
+  case 2:
+          player.player[player.index].x = 3000;
+          player.player[player.index].velocityX = 0;
+           break;
+  case 3:
+          player.player[player.index].x = 6000;
+          player.player[player.index].velocityX = 0;
+          break;
+  case 4:
+          player.player[player.index].x = 9000;
+          player.player[player.index].velocityX = 0;
+          break;
+  case 5:
+          player.player[player.index].x = 12000;
+          player.player[player.index].velocityX = 0;
+          break;
+
+}
+
+player.updateplayerinfo();
+
+
+
+
 
 
 }

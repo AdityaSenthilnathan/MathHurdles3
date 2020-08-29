@@ -2,6 +2,7 @@ class Form{
     constructor(){
         this.inputbox = createInput("Name");
         this.button = createButton("Enter");
+        this.reset = createButton("Reset");
 
 
     }
@@ -9,6 +10,7 @@ class Form{
     display(){
         this.inputbox.position(displayWidth/2 - 100, displayHeight/2 - 100);
         this.button.position(displayWidth/2- 50, displayHeight/2);
+        this.reset.position(displayWidth/2- 50, displayHeight/2 + 100);
         
         this.button.mousePressed(()=>{
             player.name = this.inputbox.value();
@@ -28,6 +30,21 @@ class Form{
             player.giveImages();
             player.updateplayercount(playercount);
             player.updateplayerinfo();
+            
+            
+            
+           
+            
+
+        });
+
+
+
+        this.reset.mousePressed(()=>{
+           
+            player.updateplayercount(0);
+            game.updategameState(0);
+
             
             
             

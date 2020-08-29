@@ -69,9 +69,9 @@ class Hurdles{
                 //var rand = Math.round(ran);
                    
                    textSize(20);
-                   text(texts[k],x - 10, this.y);
+                   text(texts[k],this.x2 - 10, this.y);
                 
-                   x     = x + 500;
+                   this.x2 = this.x2 + 500;
     
     
                }
@@ -83,9 +83,9 @@ class Hurdles{
                     //var rand = Math.round(ran);
                        
                        textSize(20);
-                       text(texts[k],x - 10, this.y2);
+                       text(texts[k],this.x - 10, this.y2);
                     
-                       x = x + 500;
+                       this.x = this.x + 500;
         
         
                    }

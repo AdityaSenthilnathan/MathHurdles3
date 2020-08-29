@@ -99,11 +99,12 @@ class Game{
         
         
 
-        if (player.player[player.index].x === 3000){
+        if (player.player[player.index].x%3000 === 0){
             
             player.level++;
             strokeWeight(30);
             player.updateplayerlevel();
+            console.log(player.level);
             //Player.updateplayersFinished(player.rank);
             //player.updateplayerrankinfo(player.rank);
            

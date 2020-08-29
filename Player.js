@@ -4,12 +4,13 @@ class Player{
         this.name = null;
         this.hurdlesPassed = 0;
         this.distance = 0;
-        this.level = 0;
+        this.level = 1;
         this.player = []
         this.player1 = createSprite( 200,200,50,50);
         this.player2 = createSprite( 200,400,50,50);
         this.player[0] = this.player1;
         this.player[1] = this.player1;
+        this.life = 3; 
         this.player[2] = this.player2;
         this.player.visible = false;
         this.player.veliocityY = 1
