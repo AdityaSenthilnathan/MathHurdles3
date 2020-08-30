@@ -1,5 +1,6 @@
 var gameState = 0;
 var ground;
+var problem;
 var playercount = 0;
 var one = 1;
 var texts = [], text;
@@ -60,7 +61,7 @@ function preload() {
 function setup() {
   //textMode(CENTER);
 
- // music2 = loadSound('/airtone_-_forgottenland.mp3');
+  // music2 = loadSound('/airtone_-_forgottenland.mp3');
   /*var rand1 = random(0,7);
   var rand1 = random(0,7);
   var rand1 = random(0,7);*/
@@ -70,7 +71,7 @@ function setup() {
   ground = createSprite(5000, 240, 100000, 1);
   ground2 = createSprite(5000, 440, 100000, 1);
 
-// for numbers and text
+  // for numbers and text
   for (var k = 0; k < 10; k++) {
     randomNumber = Math.round(random(1, 2));
 
@@ -135,23 +136,25 @@ function draw() {
     textSize(13);
     text("Enter Your Name", 100, 200);
 
-   // form.display();
+    // form.display();
 
   }
 
   if (gameState === 1) {
+
     if (flag === 0) {
       for (var c = 0; c < 5; c++) {
 
         hurdle[c] = new Hurdles((c * 3000) + 500);
         hurdle[c].createHurdles();
-       
+
 
       }
+
       flag = 1
     }
-    for (var c = 0; c < 5; c++) {
-    hurdle[c].createtext();
+    for (var e = 0; e < 5; e++) {
+      hurdle[e].createtext((e * 3000) + 500);
     }
     game.play();
     textSize(20);
@@ -166,7 +169,7 @@ function draw() {
 
     text(name, player.player[player.index].position.x - 20, player.player[player.index].position.y - 50)
     textSize(15);
-    text("resonance by airtone (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. http://dig.ccmixter.org/files/airtone/61321 ", player.player[player.index].position.x + 50 , 720);
+    text("resonance by airtone (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. http://dig.ccmixter.org/files/airtone/61321 ", player.player[player.index].position.x + 50, 720);
     textSize(20);
     //hurdle1.createHurdles();
     //hurdle2 = new Hurdles(500);
@@ -179,51 +182,52 @@ function draw() {
     }
 
 
-   
-      for (var b = 0; b < 2; b++) {
-       
 
-        for (var a = 0; a < hurdle[b].hurdles1.length; a++) {
-          if (player.player[player.index].isTouching(hurdle[b].hurdles1) && textsNumber[a] != 17) {
-             
+    for (var b = 0; b < 5; b++) {
 
-            if (player.life === 0 ){
-              if (over === 0) {
-                music.stop();
-                gameOver.play();
-               
-                over = 1;
-              }
+
+      for (var a = 0; a < hurdle[b].hurdles1.length; a++) {
+
+        if (player.player[player.index].isTouching(hurdle[b].hurdles1[a]) && textsNumber[a] != 17) {
+
+
+          if (player.life === 0) {
+            if (over === 0) {
+              music.stop();
+              gameOver.play();
+
+              over = 1;
+            }
 
             out = "true"
             player.player[player.index].velocityX = 0;
             text("Wrong, the correct answer to " + texts[a] + " is: " + textsNumber[a] + ", not 17", player.player[player.index].x + 200, 100);
-            
-            }
-            else{
-              player.life = player.life - 1;
-              //respawn();
-            }
-          }
-          if (player.player[player.index].isTouching(hurdle[b].hurdles1) && textsNumber[a] === 17 && hurdle[b].hurdles1.x === player.player[player.index].x) {
-            //speed = speed + 1;
-            player.player[player.index].velocityX = speed;
-            points++;
-
-
-            point.play();
-
 
           }
+          else {
+            player.life = player.life - 1;
+            respawn();
+          }
+        }
+        if (player.player[player.index].isTouching(hurdle[b].hurdles1[a]) && textsNumber[a] === 17 && hurdle[b].hurdles1[a].x === player.player[player.index].x) {
+          //speed = speed + 1;
+          player.player[player.index].velocityX = speed;
+          points++;
+
+
+          point.play();
+
 
         }
 
-      
+      }
+
+
 
 
     }
 
-  
+
 
 
   }
@@ -263,37 +267,37 @@ function keyPressed() {
 
 }
 
-function respawn(){
+function respawn() {
 
 
 
 
 
-switch(player.level){
-  case 1:
-          player.player[player.index].x = 0;
-          player.player[player.index].velocityX = 0;
-          break;
-  case 2:
-          player.player[player.index].x = 3000;
-          player.player[player.index].velocityX = 0;
-           break;
-  case 3:
-          player.player[player.index].x = 6000;
-          player.player[player.index].velocityX = 0;
-          break;
-  case 4:
-          player.player[player.index].x = 9000;
-          player.player[player.index].velocityX = 0;
-          break;
-  case 5:
-          player.player[player.index].x = 12000;
-          player.player[player.index].velocityX = 0;
-          break;
+  switch (player.level) {
+    case 1:
+      player.player[player.index].x = 0;
+      player.player[player.index].velocityX = 0;
+      break;
+    case 2:
+      player.player[player.index].x = 3000;
+      player.player[player.index].velocityX = 0;
+      break;
+    case 3:
+      player.player[player.index].x = 6000;
+      player.player[player.index].velocityX = 0;
+      break;
+    case 4:
+      player.player[player.index].x = 9000;
+      player.player[player.index].velocityX = 0;
+      break;
+    case 5:
+      player.player[player.index].x = 12000;
+      player.player[player.index].velocityX = 0;
+      break;
 
-}
+  }
 
-player.updateplayerinfo();
+  player.updateplayerinfo();
 
 
 

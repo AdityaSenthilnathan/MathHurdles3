@@ -105,6 +105,12 @@ class Game{
             strokeWeight(30);
             player.updateplayerlevel();
             console.log(player.level);
+
+            if ((player.level - points) > 0){
+                this.end()
+
+
+            }
             //Player.updateplayersFinished(player.rank);
             //player.updateplayerrankinfo(player.rank);
            
