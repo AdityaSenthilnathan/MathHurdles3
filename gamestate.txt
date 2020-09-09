@@ -1,0 +1,17 @@
+
+GameState:
+=========
+
+    0 - Beginning value 
+    "Play" - After both players join
+    "End" - Both player completes the game 
+
+LocalGameState:
+===============
+
+    "firstpage"
+    "settings"
+    "reset"
+    "play" "entername" - 
+    "play2" "backstory" -
+    "finalplay" "playtrue"  

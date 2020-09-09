@@ -10,7 +10,7 @@ class Game{
             //player = new Player();
             player.getplayercount();
             //form = new Form();
-            form.display();
+          //  form.display();
        // text("forgottenland by airtone (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. http://dig.ccmixter.org/files/airtone/61959 ",250 , 720)
         //image(img1, 50, 50);
 
@@ -20,7 +20,7 @@ class Game{
 
         if (playercount === 2){
 
-            gameState = 1;
+            gameState = "play";
             this.updategameState(gameState);
            // music2.stop();
 
@@ -30,13 +30,26 @@ class Game{
     }
 
     play(){
-        if (music.isPlaying()) {
-          
-          } else {
-            music.play();
-           
-          }
+       if (musicplay === 1){
+        music2.stop();
+        musicplay = 2
+       }
+
+        if(musicplay === 2  ){
+            if (music.isPlaying()){
       
+              
+      
+            }
+            else{
+      
+              music.play();
+            }
+          }
+          else{
+            music.stop();
+      
+          }
         Player.getallplayerinfo();
        // Player.getplayersFinished();
        if(allplayers != undefined){

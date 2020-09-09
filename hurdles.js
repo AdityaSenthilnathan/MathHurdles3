@@ -64,14 +64,14 @@ class Hurdles{
 
     }
 
-    createtext(x){
+    createtext(x, number){
         if(player.index === 1){
             for(var k = 0; k< 5; k++){
                 //var ran = random(0,4);
                 //var rand = Math.round(ran);
                    
                    textSize(20);
-                   problem = text(texts[k],x - 10, this.y);
+                   problem = text(alltext[number][k],x - 10, this.y);
                 
                    x = x + 500;
     
@@ -85,7 +85,7 @@ class Hurdles{
                     //var rand = Math.round(ran);
                        
                        textSize(20);
-                       problem = text(texts[k],x - 10, this.y2);
+                       problem = text(alltext[number][k],x - 10, this.y2);
                     
                       x = x + 500;
         

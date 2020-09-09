@@ -8,12 +8,18 @@ class Player{
         this.player = []
         this.player1 = createSprite( 200,200,50,50);
         this.player2 = createSprite( 200,400,50,50);
+       
         this.player[0] = this.player1;
         this.player[1] = this.player1;
+
+
         this.life = 3; 
         this.player[2] = this.player2;
-        this.player.visible = false;
-        this.player.veliocityY = 1
+
+       
+
+        this.player1.visible = false;
+        this.player2.visible = false;
         this.index = 1;
       
 
@@ -21,10 +27,17 @@ class Player{
     }
 
     giveImages(){
-     
-        this.player[this.index].visible = true;
-        this.player[this.index].addAnimation("mario", mario);
-        this.player[this.index].scale = 0.5;
+
+
+        this.player[1].visible = true;
+        this.player[1].addAnimation("mario", mario);
+        this.player[1].scale = 0.5;
+        
+
+
+        this.player[2].visible = true;
+        this.player[2].addAnimation("pikachu",pikachu);
+        this.player[2].scale = 0.5;
         
 
 
