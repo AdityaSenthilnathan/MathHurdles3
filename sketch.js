@@ -35,7 +35,7 @@ var plaerindex
 var points = 0;
 var flag = 0;
 var out = "false";
-var speed = 10;
+var speed = 5;
 var allplayers;
 //var player = [];
 var index;
@@ -74,6 +74,7 @@ function preload() {
   mario = loadAnimation("images/mario/mario1.png", "images/mario/mario2.png", "images/mario/mario3.png");
   pikachu = loadAnimation("images/pikachu/pikachu.1.png", "images/pikachu/pikachu.2.png", "images/pikachu/pikachu.3.png", "images/pikachu/pikachu.4.png",)
   Hurdlespng = loadImage("images/Hurdle.png");
+  numbers = loadImage("images/numbers.png");
 
   jump = loadSound('music/jump.mp3');
   gameOver = loadSound('music/gameOver.wav');
@@ -99,11 +100,11 @@ randomN1 = Math.round(random(10, 20));
 
 randomN2 = Math.round(random(10, 20));
 
-randomN3 = Math.round(random(10, 20));
+randomN3 = Math.round(random(20, 30));
 
-randomN4 = Math.round(random(10, 20));
+randomN4 = Math.round(random(20,30));
 
-randomN5 = Math.round(random(10, 20));
+randomN5 = Math.round(random(30, 40));
 
 randomN = [];
 randomN[0] = randomN1;
@@ -152,17 +153,17 @@ randomN[4] = randomN5;
     randomNumber2 = Math.round(random(1, 2));
 
     if (randomNumber2 === 1) {
-      rands2[k] = Math.round(random(20, 26));
-      fakeRands2[k] = Math.round(random(1, 15));
+      rands2[k] = Math.round(random(1, 10));
+      fakeRands2[k] =  Math.round(random(10, 20));
 
 
-      texts2[k] = (rands2[k] - randomNumber2 )  + " + " +  randomNumber2;
-      textsNumber2[k] = (  rands2[k] - randomNumber2  ) + randomNumber2;
+      texts2[k] = rands2[k] + " + " +  (randomN2 - rands2[k]);
+      textsNumber2[k] =   randomN2;
     }
     else {
       rands2[k] = Math.round(random(20, 26));
-      fakeRands2[k] = Math.round(random(1, 15));
-      texts2[k] = (rands2[k] - randomNumber2)  + " + " +  fakeRands2[k];
+      fakeRands2[k] =  Math.round(random(10, 20));
+      texts2[k] = rands2[k] + " + " +  fakeRands2[k];
       textsNumber2[k] = (rands2[k] - randomNumber2) + fakeRands2[k];
     }
 
@@ -172,13 +173,7 @@ randomN[4] = randomN5;
 
 
 
-  
-
-//still nead to change
-
-
-
-
+//third Section
 
 
 
@@ -186,56 +181,61 @@ randomN[4] = randomN5;
     randomNumber3 = Math.round(random(1, 2));
 
     if (randomNumber3 === 1) {
-      rands3[k] = Math.round(random(20, 26));
-      fakeRands3[k] = Math.round(random(1, 15));
+      rands3[k] = Math.round(random(30, 36));
+      fakeRands3[k] = Math.round(random(1, 10));
 
 
       texts3[k] = rands3[k] + " - " + (rands3[k] - randomN3);
       textsNumber3[k] = rands3[k] - (rands3[k] - randomN3);
     }
     else {
-      rands3[k] = Math.round(random(20, 26));
+      rands3[k] = Math.round(random(1, 10));
       fakeRands3[k] = Math.round(random(1, 15));
       texts3[k] = rands3[k] + " - " + (rands3[k] - fakeRands3[k]);
       textsNumber3[k] = rands3[k] - (rands3[k] - fakeRands3[k]);
 
     }
 
+//4th section
+
   }
   for (var k = 0; k < 5; k++) {
     randomNumber4 = Math.round(random(1, 2));
 
     if (randomNumber4 === 1) {
-      rands4[k] = Math.round(random(20, 26));
-      fakeRands4[k] = Math.round(random(1, 15));
+      rands4[k] = Math.round(random(10, 20));
+      fakeRands4[k] = Math.round(random(10, 15));
 
 
-      texts4[k] = rands4[k] + " - " + (rands3[k] - randomN4);
-      textsNumber4[k] = rands4[k] - (rands4[k] - randomN4);
+      texts4[k] = rands4[k] + " + " + (rands3[k] - randomN4);
+      textsNumber4[k] = rands4[k] + (rands4[k] - randomN4);
     }
     else {
-      rands4[k] = Math.round(random(20, 26));
-      fakeRands4[k] = Math.round(random(1, 15));
-      texts4[k] = rands4[k] + " - " + (rands4[k] - fakeRands3[k]);
-      textsNumber4[k] = rands4[k] - (rands4[k] - fakeRands4[k]);
+      rands4[k] = Math.round(random(10, 20));
+      fakeRands4[k] = Math.round(random(10, 15));
+      texts4[k] = rands4[k] + " + " + (rands4[k] - fakeRands3[k]);
+      textsNumber4[k] = rands4[k] + (rands4[k] - fakeRands4[k]);
 
     }
 
   }
+
+
+  //addition again 
   for (var k = 0; k < 5; k++) {
     randomNumber5 = Math.round(random(1, 2));
 
     if (randomNumber5 === 1) {
-      rands5[k] = Math.round(random(20, 26));
-      fakeRands5[k] = Math.round(random(1, 15));
+      rands5[k] = Math.round(random(30, 36));
+      fakeRands5[k] = Math.round(random(30, 36));
 
 
       texts5[k] = rands5[k] + " - " + (rands5[k] - randomN5);
       textsNumber5[k] = rands5[k] - (rands5[k] - randomN5);
     }
     else {
-      rands5[k] = Math.round(random(20, 26));
-      fakeRands5[k] = Math.round(random(1, 15));
+      rands5[k] = Math.round(random(30, 36));
+      fakeRands5[k] = Math.round(random(30, 36));
       texts5[k] = rands5[k] + " - " + (rands5[k] - fakeRands5[k]);
       textsNumber5[k] = rands5[k] - (rands5[k] - fakeRands5[k]);
 
@@ -265,7 +265,13 @@ randomN[4] = randomN5;
 
 
 function draw() {
-  background(100);
+  if(player.level > 6){
+    textSize(30);
+    text("YOU WON (leader board part does not work yet)",displayWidth/2, displayHeight/2);
+    textSize(10);
+
+  }
+  background(numbers);
 
 
 
@@ -398,25 +404,49 @@ function draw() {
     //hurdle3 = new Hurdles(500);
     //hurdle4 = new Hurdles(500);
     //hurdle5 = new Hurdles(500);
+
+
+
     if (out === "false") {
-      text(randomN1, player.player[player.index].x + 500, 100)
+      if (player.level == 1)
+        text(randomN1, player.player[player.index].x + 500, 100);
 
+        if (player.level == 2)
+        text(randomN2, player.player[player.index].x + 500, 100);
+
+        if (player.level == 3)
+        text(randomN3, player.player[player.index].x + 500, 100);
+
+        if (player.level == 4)
+        text(randomN4, player.player[player.index].x + 500, 100);
+
+        if (player.level == 5)
+        text(randomN5, player.player[player.index].x + 500, 100);
     }
-
-
-
+    
     for (var b = 0; b < 5; b++) {
-
-
+       
+      
       for (var a = 0; a < hurdle[b].hurdles1.length; a++) {
 
-        if (player.player[player.index].isTouching(hurdle[b].hurdles1[a]) && textsNumber[a] != randomN[b]) {
+        var displayanswer = 0; 
+        if (b == 0) { displayanswer = textsNumber[a]; }  
+        if (b == 1) { displayanswer = textsNumber2[a]; }  
+        if (b == 2) { displayanswer = textsNumber3[a]; }  
+        if (b == 3) { displayanswer = textsNumber4[a]; }  
+        if (b == 4) { displayanswer = textsNumber5[a]; }  
+
+        if (player.player[player.index].isTouching(hurdle[b].hurdles1[a])) {
           /*  push();
             angleMode(DEGREES);
             rotate(90);
             
             hurdle[b].hurdles1[a]
             pop();*/
+
+          if (displayanswer != randomN[b]) {
+
+          
 
           hurdle[b].hurdles1[a].rotation = 90;
 
@@ -431,7 +461,7 @@ function draw() {
 
             out = "true"
             player.player[player.index].velocityX = 0;
-            text("Wrong, the correct answer to " + texts[a] + " is: " + textsNumber[a] + ", not "+randomN1, player.player[player.index].x + 200, 100);
+            text("Wrong, the correct answer to " + texts[a] + " is: " + displayanswer+ ", not "+randomN[b], player.player[player.index].x + 200, 100);
 
           }
           else {
@@ -440,7 +470,8 @@ function draw() {
             player.life = player.life - 1;
           }
         }
-        if (player.player[player.index].isTouching(hurdle[b].hurdles1[a]) && textsNumber[a] === randomN1 && hurdle[b].hurdles1[a].x === player.player[player.index].x) {
+        }
+        if (player.player[player.index].isTouching(hurdle[b].hurdles1[a]) && displayanswer === randomN[b] && hurdle[b].hurdles1[a].x === player.player[player.index].x) {
           //speed = speed + 1;
           //player.player[player.index].velocityX = speed;
           points++;
@@ -482,7 +513,7 @@ function keyPressed() {
     }
     if (keyCode === UP_ARROW) {
       jump.play();
-      player.player[player.index].velocityY = -10
+      player.player[player.index].velocityY = -13
       player.updateplayerinfo();
 
 

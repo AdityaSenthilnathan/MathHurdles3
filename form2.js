@@ -1,23 +1,38 @@
 class Form2{
     constructor(){
+
+        let col = color(25, 23, 150, 255);
+
         this.play = createButton("Play");
+        this.play.style('background-color', col);
+
         this.controls = createButton("Controls");
+        this.controls.style('background-color', col);
+
         this.reset = createButton("Reset");
+        this.reset.style('background-color', col);
+
         this.settings = createButton("Settings");
+        this.settings.style('background-color', col);
+
+
         this.musictrue = createButton("Turn On / Turn Off Music");
+        this.musictrue.style('background-color', col);
         this.musictrue.hide();
 
         this.goBack = createButton("Go Back!");
         this.goBack.hide();
+        this.goBack.style('background-color', col);
 
         this.entername = createInput("Enter Name Here");
         this.entername.hide();
+        this.entername.style('background-color', col);
 
         this.button = createButton("Enter");
         this.button.hide();
         
-        
-
+        this.button.style('background-color', col);
+        //this.button.style('font-size', '20px');
 
     }
 
