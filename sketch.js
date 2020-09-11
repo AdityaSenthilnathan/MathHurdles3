@@ -498,10 +498,10 @@ function draw() {
       if (player.index === 1) {    
          text("Player 1 Rank : 1       Points : " + allplayers.player1.Points , player.player[player.index].position.x + 20, 120);
          text("Player 2 Rank : 2       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 180);
-         text("You won the Game ",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
+         text("You won the Game ",player.player[player.index].position.x + 20, 280);
 
       }   else {
-          text("You Lost. Better luck next time",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
+          text("You Lost. Better luck next time",player.player[player.index].position.x + 20, 280);
           text("Player 1 Rank : 2       Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 120);
           text("Player 2 Rank : 1       Points : "  + allplayers.player2.Points,player.player[player.index].position.x + 20, 180);
           
@@ -512,10 +512,10 @@ function draw() {
       if (player.index === 1) {    
         text("Player 2 Rank : 1       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);; 
         text("Player 1 Rank : 2      Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
-        text("You Lost. Better luck next time ",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
+        text("You Lost. Better luck next time ",player.player[player.index].position.x + 20, 280);
 
      }   else {
-         text("You won the Game",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
+         text("You won the Game",player.player[player.index].position.x + 20, 280);
          text("Player 2 Rank : 2       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);
          text("Player 1 Rank : 1       Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
          
