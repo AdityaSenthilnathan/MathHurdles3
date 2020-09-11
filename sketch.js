@@ -319,8 +319,9 @@ function draw() {
   }
 
   if (localGameState === "play2") {
+  textSize(30);
 
-    text(player.name + " always wanted to earn the olympic gold medal and he just got into the finals for Math Hurdles,\n but there is many tough qeustions in his way and one last tough oppponent, can you help " + player.name+ " to win?!",displayWidth/2, displayHeight/2 );
+    text(player.name + " always wanted to earn the olympic gold medal and he just got into the finals for Math Hurdles,\n but there is many tough qeustions in his way and one last tough oppponent, can you help " + player.name+ " to win?!",displayWidth/2 - 200, displayHeight/2 -500);
   }
 
   
