@@ -265,12 +265,7 @@ randomN[4] = randomN5;
 
 
 function draw() {
-  if(player.level > 6){
-    textSize(30);
-    text("YOU WON (leader board part does not work yet)",displayWidth/2, displayHeight/2);
-    textSize(10);
-
-  }
+ 
   background(numbers);
 
 
@@ -465,7 +460,7 @@ function draw() {
 
           }
           else {
-
+            points = points - 2;
             respawn();
             player.life = player.life - 1;
           }
@@ -496,7 +491,42 @@ function draw() {
 
   drawSprites();
 
+  if(player.level > 6){
+    textSize(30);
+    text("Congragilations you have completed the game!",player.player[player.index].position.x + 20, 60);
+    if(allplayers.player1.Points > allplayers.player2.Points){
+      if (player.index === 1) {    
+         text("Player 1 Rank : 1       Points : " + allplayers.player1.Points , player.player[player.index].position.x + 20, 120);
+         text("Player 2 Rank : 2       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 180);
+         text("You won the Game ",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
 
+      }   else {
+          text("You Lost. Better luck next time",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
+          text("Player 1 Rank : 2       Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 120);
+          text("Player 2 Rank : 1       Points : "  + allplayers.player2.Points,player.player[player.index].position.x + 20, 180);
+          
+      }
+
+    }
+    else {
+      if (player.index === 1) {    
+        text("Player 2 Rank : 1       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);; 
+        text("Player 1 Rank : 2      Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
+        text("You Lost. Better luck next time ",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
+
+     }   else {
+         text("You won the Game",allplayers.player2.Points,player.player[player.index].position.x + 20, 280);
+         text("Player 2 Rank : 2       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);
+         text("Player 1 Rank : 1       Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
+         
+     }
+
+    }
+    player.player[player.index].velocityX = 0;
+    speed === 0;
+    textSize(10);
+
+  }
 
 
 }
@@ -537,24 +567,24 @@ function respawn() {
 
   switch (player.level) {
     case 1:
-      player.player[player.index].x = 1;
-      player.player[player.index].velocityX = 1;
+      player.player[player.index].x = 5;
+      player.player[player.index].velocityX = 0;
       break;
     case 2:
-      player.player[player.index].x = 3001;
-      player.player[player.index].velocityX = 1;
+      player.player[player.index].x = 3005;
+      player.player[player.index].velocityX = 0;
       break;
     case 3:
-      player.player[player.index].x = 6001;
-      player.player[player.index].velocityX = 1;
+      player.player[player.index].x = 6005;
+      player.player[player.index].velocityX = 0;
       break;
     case 4:
-      player.player[player.index].x = 9001;
-      player.player[player.index].velocityX = 1;
+      player.player[player.index].x = 9005;
+      player.player[player.index].velocityX = 0;
       break;
     case 5:
-      player.player[player.index].x = 12001;
-      player.player[player.index].velocityX = 1;
+      player.player[player.index].x = 12005;
+      player.player[player.index].velocityX = 0;
       break;
 
   }

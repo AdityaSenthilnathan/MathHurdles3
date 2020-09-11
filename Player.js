@@ -4,6 +4,7 @@ class Player{
         this.name = null;
         this.hurdlesPassed = 0;
         this.distance = 0;
+        this.points = 0;
         this.level = 1;
         this.player = []
         this.player1 = createSprite( 200,200,50,50);
@@ -64,7 +65,8 @@ class Player{
     updateplayerlevel(){
         var playerlevelref = database.ref("players/player" + this.index)
      playerlevelref.update({
-           Level: this.level
+           Level: this.level,
+           Points: points
         
 
      });
@@ -116,7 +118,8 @@ class Player{
             name: this.name,
             distance: this.player[this.index].x,
             yposition: this.player[this.index].y,
-            Level: this.level
+            Level: this.level,
+            Points: points 
         });
 
 
