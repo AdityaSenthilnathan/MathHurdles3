@@ -5,31 +5,55 @@ class Form2{
 
         this.play = createButton("Play");
         this.play.style('background-color', col);
+        this.play.size(150,50);
+        this.play.style('color', "white");
+        this.play.style('font-size','20px');
 
         this.controls = createButton("Controls");
         this.controls.style('background-color', col);
+        this.controls.size(150,50);
+        this.controls.style('color', "white");
+        this.controls.style('font-size','20px');
 
         this.reset = createButton("Reset");
         this.reset.style('background-color', col);
+        this.reset.size(150,50);
+        this.reset.style('color', "white");
+        this.reset.style('font-size','20px');
 
         this.settings = createButton("Settings");
         this.settings.style('background-color', col);
-
+        this.settings.size(150,50);
+        this.settings.style('color', "white");
+        this.settings.style('font-size','20px');
 
         this.musictrue = createButton("Turn On / Turn Off Music");
         this.musictrue.style('background-color', col);
         this.musictrue.hide();
+        this.musictrue.size(150,50);
+        this.musictrue.style('color', "white");
+        this.musictrue.style('font-size','20px');
 
         this.goBack = createButton("Go Back!");
         this.goBack.hide();
         this.goBack.style('background-color', col);
+        this.goBack.size(150,50);
+        this.goBack.style('color', "white");
+        this.goBack.style('font-size','20px');
 
         this.entername = createInput("Enter Name Here");
         this.entername.hide();
         this.entername.style('background-color', col);
+        this.entername.size(200,50);
+        this.entername.style('color', "white");
+        this.entername.style('font-size','20px');
+
 
         this.button = createButton("Enter");
         this.button.hide();
+        this.button.size(150,50);
+        this.button.style('color', "white");
+        this.button.style('font-size','20px');
         
         this.button.style('background-color', col);
         //this.button.style('font-size', '20px');
@@ -46,7 +70,7 @@ class Form2{
         this.goBack.position(displayWidth/2- 50, displayHeight/2 + 200);
 
 
-        this.entername.position(displayWidth/2 - 100, displayHeight/2 - 100);
+        this.entername.position(displayWidth/2 - 75, displayHeight/2 - 100);
         this.button.position(displayWidth/2- 50, displayHeight/2);
 
         if (localGameState === "firstpage"){

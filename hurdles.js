@@ -70,7 +70,7 @@ class Hurdles{
                 //var ran = random(0,4);
                 //var rand = Math.round(ran);
                    
-                   textSize(20);
+                   textSize(30);
                    problem = text(alltext[number][k],x - 10, this.y);
                 
                    x = x + 500;
@@ -84,7 +84,7 @@ class Hurdles{
                     //var ran = random(0,4);
                     //var rand = Math.round(ran);
                        
-                       textSize(20);
+                       textSize(30);
                        problem = text(alltext[number][k],x - 10, this.y2);
                     
                       x = x + 500;

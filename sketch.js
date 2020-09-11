@@ -74,7 +74,7 @@ function preload() {
   mario = loadAnimation("images/mario/mario1.png", "images/mario/mario2.png", "images/mario/mario3.png");
   pikachu = loadAnimation("images/pikachu/pikachu.1.png", "images/pikachu/pikachu.2.png", "images/pikachu/pikachu.3.png", "images/pikachu/pikachu.4.png",)
   Hurdlespng = loadImage("images/Hurdle.png");
-  numbers = loadImage("images/numbers.png");
+  numbers = loadImage("images/backround.jpg");
 
   jump = loadSound('music/jump.mp3');
   gameOver = loadSound('music/gameOver.wav');
@@ -255,7 +255,7 @@ randomN[4] = randomN5;
 
 
   game = new Game();
-  fill(152, 5, 5);
+  fill('white');
 
     //textMode(CENTER);
 
@@ -314,14 +314,16 @@ function draw() {
 
 
     }
+
     // form.display();
 
   }
 
   if (localGameState === "play2") {
-  textSize(30);
+    textSize(27);
+    
 
-    text(player.name + " always wanted to earn the olympic gold medal and he just got into the finals for Math Hurdles,\n but there is many tough qeustions in his way and one last tough oppponent, can you help " + player.name+ " to win?!",displayWidth/2 - 200, displayHeight/2 -500);
+    text(player.name + " always wanted to earn the olympic gold medal and he/she just got into the finals for Math Hurdles,\n but there is many tough qeustions in his way and one last tough oppponent, can you help " + player.name+ " to win?!",displayWidth/2 - 700, displayHeight/2 -200);
   }
 
   
@@ -382,8 +384,8 @@ function draw() {
     }
     
     textSize(20);
-    text(points, player.player[player.index].position.x - 20, 50);
-
+    text("Points: "+points, player.player[player.index].position.x - 20, 50);
+    text("Lifes: "+player.life, player.player[player.index].position.x - 20, 100);
     camera.position.x = player.player[player.index].x + 500;
 
 
@@ -492,7 +494,7 @@ function draw() {
 
   drawSprites();
 
-  if(player.level > 6){
+  if(player.level > 5){
     textSize(30);
     text("Congragilations you have completed the game!",player.player[player.index].position.x + 20, 60);
     if(allplayers.player1.Points > allplayers.player2.Points){
