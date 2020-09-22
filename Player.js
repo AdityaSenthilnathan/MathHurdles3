@@ -37,8 +37,8 @@ class Player{
 
 
         this.player[2].visible = true;
-        this.player[2].addAnimation("pikachu",pikachu);
-        this.player[2].scale = 0.5;
+        this.player[2].addAnimation("sonic",sonic);
+        this.player[2].scale = 0.15;
         
 
 

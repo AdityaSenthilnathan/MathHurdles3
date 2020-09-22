@@ -13,7 +13,7 @@ class Hurdles{
     
 
         this.x0 = x;
-        this.y = 170;
+        this.y = 130;
         this.y2 = 370;
 
         this.allhurdles[0] = 0;

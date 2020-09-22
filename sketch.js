@@ -13,7 +13,7 @@ var texts3 = [];
 var texts4 = [];
 var texts5 = [];
 
-
+var phone;
 
 var flag2 = 0;
 var textsNumber2 = [];
@@ -68,14 +68,20 @@ var randomNumber3;
 var randomNumber4;
 var randomNumber5;
 
+var numbers;
+var numberscopy;
+
+
 
 
 function preload() {
   mario = loadAnimation("images/mario/mario1.png", "images/mario/mario2.png", "images/mario/mario3.png");
-  pikachu = loadAnimation("images/pikachu/pikachu.1.png", "images/pikachu/pikachu.2.png", "images/pikachu/pikachu.3.png", "images/pikachu/pikachu.4.png",)
+  pikachu = loadAnimation("images/pikachu/pikachu.1.png", "images/pikachu/pikachu.2.png", "images/pikachu/pikachu.3.png", "images/pikachu/pikachu.4.png",);
+  sonic = loadAnimation("images/sonic/sonic1.gif","images/sonic/sonic2.gif","images/sonic/sonic3.gif","images/sonic/sonic4.gif","images/sonic/sonic5.gif","images/sonic/sonic6.gif", "images/sonic/sonic7.gif","images/sonic/sonic8.gif",);
+
   Hurdlespng = loadImage("images/Hurdle.png");
   numbers = loadImage("images/backround.jpg");
-
+  numberscopy = numbers.get();
   jump = loadSound('music/jump.mp3');
   gameOver = loadSound('music/gameOver.wav');
   stageClear = loadSound('music/stageclear.wav');
@@ -90,28 +96,28 @@ function preload() {
 function setup() {
   //textMode(CENTER);
   alltext[0] = texts;
-alltext[1] = texts2;
-alltext[2] = texts3;
-alltext[3] = texts4;
-alltext[4] = texts5;
+  alltext[1] = texts2;
+  alltext[2] = texts3;
+  alltext[3] = texts4;
+  alltext[4] = texts5;
 
 
-randomN1 = Math.round(random(10, 20));
+  randomN1 = Math.round(random(10, 20));
 
-randomN2 = Math.round(random(10, 20));
+  randomN2 = Math.round(random(10, 20));
 
-randomN3 = Math.round(random(20, 30));
+  randomN3 = Math.round(random(20, 30));
 
-randomN4 = Math.round(random(20,30));
+  randomN4 = Math.round(random(20, 30));
 
-randomN5 = Math.round(random(30, 40));
+  randomN5 = Math.round(random(30, 40));
 
-randomN = [];
-randomN[0] = randomN1;
-randomN[1] = randomN2;
-randomN[2] = randomN3;
-randomN[3] = randomN4;
-randomN[4] = randomN5;
+  randomN = [];
+  randomN[0] = randomN1;
+  randomN[1] = randomN2;
+  randomN[2] = randomN3;
+  randomN[3] = randomN4;
+  randomN[4] = randomN5;
 
 
   // music2 = loadSound('/airtone_-_forgottenland.mp3');
@@ -125,7 +131,7 @@ randomN[4] = randomN5;
 
   // for numbers and text
   for (var k = 0; k < 5; k++) {
-     randomNumber = Math.round(random(1, 2));
+    randomNumber = Math.round(random(1, 2));
 
     if (randomNumber === 1) {
       rands[k] = Math.round(random(20, 26));
@@ -148,36 +154,36 @@ randomN[4] = randomN5;
 
 
 
-   // for numbers and text 2
-   for (var k = 0; k < 5; k++) {
+  // for numbers and text 2
+  for (var k = 0; k < 5; k++) {
     randomNumber2 = Math.round(random(1, 2));
 
     if (randomNumber2 === 1) {
       rands2[k] = Math.round(random(1, 10));
-      fakeRands2[k] =  Math.round(random(10, 20));
+      fakeRands2[k] = Math.round(random(10, 20));
 
 
-      texts2[k] = rands2[k] + " + " +  (randomN2 - rands2[k]);
-      textsNumber2[k] =   randomN2;
+      texts2[k] = rands2[k] + " + " + (randomN2 - rands2[k]);
+      textsNumber2[k] = randomN2;
     }
     else {
       rands2[k] = Math.round(random(20, 26));
-      fakeRands2[k] =  Math.round(random(10, 20));
-      texts2[k] = rands2[k] + " + " +  fakeRands2[k];
+      fakeRands2[k] = Math.round(random(10, 20));
+      texts2[k] = rands2[k] + " + " + fakeRands2[k];
       textsNumber2[k] = (rands2[k] - randomNumber2) + fakeRands2[k];
     }
 
   }
-//
+  //
 
 
 
 
-//third Section
+  //third Section
 
 
 
-   for (var k = 0; k < 5; k++) {
+  for (var k = 0; k < 5; k++) {
     randomNumber3 = Math.round(random(1, 2));
 
     if (randomNumber3 === 1) {
@@ -196,7 +202,7 @@ randomN[4] = randomN5;
 
     }
 
-//4th section
+    //4th section
 
   }
   for (var k = 0; k < 5; k++) {
@@ -251,13 +257,13 @@ randomN[4] = randomN5;
 
 
 
-  createCanvas(displayWidth, displayHeight - 150);
-
+  //createCanvas(displayWidth, displayHeight - 150);
+  createCanvas(windowWidth, windowHeight);
 
   game = new Game();
-  fill('white');
+  //fill('white');
 
-    //textMode(CENTER);
+  //textMode(CENTER);
 
 
   //createSprite(400, 200, 50, 50);
@@ -265,34 +271,37 @@ randomN[4] = randomN5;
 
 
 function draw() {
- 
+
+
   background(numbers);
 
+  image(numbers, 0, 0);
+  numbers.resize(windowWidth, windowHeight);
 
 
   if (start === "true") {
 
-    if(musicplay === 1){
+    if (musicplay === 1) {
 
-      if (music2.isPlaying()){
+      if (music2.isPlaying()) {
 
-        
+
 
       }
-      else{
+      else {
 
         music2.play();
       }
     }
-    else{
+    else {
       music2.stop();
 
     }
-  
+
 
 
     if (flag2 === 0) {
-    
+
       //music2.play();
       player = new Player();
       form2 = new Form2();
@@ -302,15 +311,15 @@ function draw() {
 
     form2.display();
 
-    if(localGameState === "controls"){
+    if (localGameState === "controls") {
       textSize(35);
       textAlign(CENTER, CENTER)
-      text("    you will start of with a slow speed just to start things off, then press the right arrow \n on your keyboard to get start, press up to jump over hurdles whos answer is not eqaul\nto the value on the screen, to earn point pass through the hurdles with the correct answer", displayWidth/2, displayHeight/2 );
+      text("    you will start of with a slow speed just to start things off, then press the right arrow \n on your keyboard to get start, press up to jump over hurdles whos answer is not eqaul\nto the value on the screen, to earn point pass through the hurdles with the correct answer", displayWidth / 2, displayHeight / 2);
 
     }
-    
-    if(localGameState === "play"){
-     // form.display();
+
+    if (localGameState === "play") {
+      // form.display();
 
 
     }
@@ -321,15 +330,15 @@ function draw() {
 
   if (localGameState === "play2") {
     textSize(27);
-    
 
-    text(player.name + " always wanted to earn the olympic gold medal and he/she just got into the finals for Math Hurdles,\n but there is many tough qeustions in his way and one last tough oppponent, can you help " + player.name+ " to win?!",displayWidth/2 - 700, displayHeight/2 -200);
+
+    text(player.name + " always wanted to earn the olympic gold medal and he/she just got into the finals for Math Hurdles,\n but there is many tough qeustions in his way and one last tough oppponent, can you help " + player.name + " to win?!", displayWidth / 2 - 700, displayHeight / 2 - 200);
   }
 
-  
+
   if (localGameState === "playtrue") {
 
-    
+
 
 
     game.start();
@@ -349,18 +358,19 @@ function draw() {
 
     if (flag === 0) {
 
-     
-     
+
+
 
       player.updateplayerinfo();
 
-      ground = createSprite(5000, 240, 100000, 1);
+      ground = createSprite(5000, 200, 100000, 1);
       ground2 = createSprite(5000, 440, 100000, 1);
 
-  
+      player.player[1].position.x = ground.y - 20;
+      player.player[2].position.x = ground2.y - 20;
 
-    
-     
+
+
 
 
       for (var c = 0; c < 5; c++) {
@@ -376,18 +386,22 @@ function draw() {
 
     player.player[player.index].collide(ground);
     player.player[player.index].collide(ground2);
-    player.player[player.index].velocityY = player.player[player.index].velocityY + 0.5;
+    player.player[player.index].velocityY = player.player[player.index].velocityY + 0.2;
 
     for (var e = 0; e < 5; e++) {
       hurdle[e].createtext((e * 3000) + 500, e
       );
     }
-    
-    textSize(20);
-    text("Points: "+points, player.player[player.index].position.x - 20, 50);
-    text("Lifes: "+player.life, player.player[player.index].position.x - 20, 100);
-    camera.position.x = player.player[player.index].x + 500;
 
+    textSize(20);
+    text("Points: " + points, player.player[player.index].position.x - 20, 50);
+    text("Lifes: " + player.life, player.player[player.index].position.x - 20, 100);
+    if (phone === undefined) {
+      camera.position.x = player.player[player.index].x + 500;
+    }
+    else {
+      camera.position.x = player.player[player.index].x + 400;
+    }
 
 
 
@@ -407,32 +421,32 @@ function draw() {
 
     if (out === "false") {
       if (player.level == 1)
-        text(randomN1, player.player[player.index].x + 500, 100);
+        text("The equation's value you are looking for is: " + randomN1, player.player[player.index].x + 400, 100);
 
-        if (player.level == 2)
-        text(randomN2, player.player[player.index].x + 500, 100);
+      if (player.level == 2)
+        text("The equation's value you are looking for is: " + randomN2, player.player[player.index].x + 400, 100);
 
-        if (player.level == 3)
-        text(randomN3, player.player[player.index].x + 500, 100);
+      if (player.level == 3)
+        text("The equation's value you are looking for is: " + randomN3, player.player[player.index].x + 400, 100);
 
-        if (player.level == 4)
-        text(randomN4, player.player[player.index].x + 500, 100);
+      if (player.level == 4)
+        text("The equation's value you are looking for is: " + randomN4, player.player[player.index].x + 400, 100);
 
-        if (player.level == 5)
-        text(randomN5, player.player[player.index].x + 500, 100);
+      if (player.level == 5)
+        text("The equation's value you are looking for is: " + randomN5, player.player[player.index].x + 400, 100);
     }
-    
+
     for (var b = 0; b < 5; b++) {
-       
-      
+
+
       for (var a = 0; a < hurdle[b].hurdles1.length; a++) {
 
-        var displayanswer = 0; 
-        if (b == 0) { displayanswer = textsNumber[a]; }  
-        if (b == 1) { displayanswer = textsNumber2[a]; }  
-        if (b == 2) { displayanswer = textsNumber3[a]; }  
-        if (b == 3) { displayanswer = textsNumber4[a]; }  
-        if (b == 4) { displayanswer = textsNumber5[a]; }  
+        var displayanswer = 0;
+        if (b == 0) { displayanswer = textsNumber[a]; }
+        if (b == 1) { displayanswer = textsNumber2[a]; }
+        if (b == 2) { displayanswer = textsNumber3[a]; }
+        if (b == 3) { displayanswer = textsNumber4[a]; }
+        if (b == 4) { displayanswer = textsNumber5[a]; }
 
         if (player.player[player.index].isTouching(hurdle[b].hurdles1[a])) {
           /*  push();
@@ -444,30 +458,30 @@ function draw() {
 
           if (displayanswer != randomN[b]) {
 
-          
-
-          hurdle[b].hurdles1[a].rotation = 90;
 
 
-          if (player.life === 0) {
-            if (over === 0) {
-              musicplay = 0;
-              gameOver.play();
+            hurdle[b].hurdles1[a].rotation = 90;
 
-              over = 1;
+
+            if (player.life === 0) {
+              if (over === 0) {
+                musicplay = 0;
+                gameOver.play();
+
+                over = 1;
+              }
+
+              out = "true"
+              player.player[player.index].velocityX = 0;
+              text("Wrong, the correct answer to " + texts[a] + " is: " + displayanswer + ", not " + randomN[b], player.player[player.index].x + 200, 100);
+
             }
-
-            out = "true"
-            player.player[player.index].velocityX = 0;
-            text("Wrong, the correct answer to " + texts[a] + " is: " + displayanswer+ ", not "+randomN[b], player.player[player.index].x + 200, 100);
-
+            else {
+              points = points - 2;
+              respawn();
+              player.life = player.life - 1;
+            }
           }
-          else {
-            points = points - 2;
-            respawn();
-            player.life = player.life - 1;
-          }
-        }
         }
         if (player.player[player.index].isTouching(hurdle[b].hurdles1[a]) && displayanswer === randomN[b] && hurdle[b].hurdles1[a].x === player.player[player.index].x) {
           //speed = speed + 1;
@@ -494,35 +508,35 @@ function draw() {
 
   drawSprites();
 
-  if(player.level > 5){
+  if (player.level > 5) {
     textSize(30);
-    text("Congragilations you have completed the game!",player.player[player.index].position.x + 20, 60);
-    if(allplayers.player1.Points > allplayers.player2.Points){
-      if (player.index === 1) {    
-         text("Player 1 Rank : 1       Points : " + allplayers.player1.Points , player.player[player.index].position.x + 20, 120);
-         text("Player 2 Rank : 2       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 180);
-         text("You won the Game ",player.player[player.index].position.x + 20, 280);
+    text("Congragilations you have completed the game!", player.player[player.index].position.x + 20, 60);
+    if (allplayers.player1.Points > allplayers.player2.Points) {
+      if (player.index === 1) {
+        text("Player 1 Rank : 1       Points : " + allplayers.player1.Points, player.player[player.index].position.x + 20, 120);
+        text("Player 2 Rank : 2       Points : " + allplayers.player2.Points, player.player[player.index].position.x + 20, 180);
+        text("You won the Game ", player.player[player.index].position.x + 20, 280);
 
-      }   else {
-          text("You Lost. Better luck next time",player.player[player.index].position.x + 20, 280);
-          text("Player 1 Rank : 2       Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 120);
-          text("Player 2 Rank : 1       Points : "  + allplayers.player2.Points,player.player[player.index].position.x + 20, 180);
-          
+      } else {
+        text("You Lost. Better luck next time", player.player[player.index].position.x + 20, 280);
+        text("Player 1 Rank : 2       Points : " + allplayers.player1.Points, player.player[player.index].position.x + 20, 120);
+        text("Player 2 Rank : 1       Points : " + allplayers.player2.Points, player.player[player.index].position.x + 20, 180);
+
       }
 
     }
     else {
-      if (player.index === 1) {    
-        text("Player 2 Rank : 1       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);; 
-        text("Player 1 Rank : 2      Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
-        text("You Lost. Better luck next time ",player.player[player.index].position.x + 20, 280);
+      if (player.index === 1) {
+        text("Player 2 Rank : 1       Points : " + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);;
+        text("Player 1 Rank : 2      Points : " + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
+        text("You Lost. Better luck next time ", player.player[player.index].position.x + 20, 280);
 
-     }   else {
-         text("You won the Game",player.player[player.index].position.x + 20, 280);
-         text("Player 2 Rank : 2       Points : "  + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);
-         text("Player 1 Rank : 1       Points : "  + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
-         
-     }
+      } else {
+        text("You won the Game", player.player[player.index].position.x + 20, 280);
+        text("Player 2 Rank : 2       Points : " + allplayers.player2.Points, player.player[player.index].position.x + 20, 120);
+        text("Player 1 Rank : 1       Points : " + allplayers.player1.Points, player.player[player.index].position.x + 20, 180);
+
+      }
 
     }
     player.player[player.index].velocityX = 0;
@@ -532,36 +546,72 @@ function draw() {
   }
 
 
-}
 
-function keyPressed() {
-  if (out === "false") {
-    if (keyCode === RIGHT_ARROW) {
-      //player.distance = player.distance + speed;
-      //player.player.x = player.distance;
+  if (touches.length >= 1) {
 
-      player.player[player.index].velocityX = speed;
-      player.updateplayerinfo();
+    mytouchfunction(touches[0].x, touches[0].y);
 
-    }
-    if (keyCode === UP_ARROW) {
-      jump.play();
-      player.player[player.index].velocityY = -13
-      player.updateplayerinfo();
-
-
-    }
-
-    /* if (keyCode === DOWN_ARROW) {
-       jump.play();  
-       player.player.velocityY = 10
- 
-     }*/
   }
 
 
 }
 
+function keyPressed() {
+
+  if (gameState === "play") {
+
+    if (out === "false") {
+      
+      if (keyCode === RIGHT_ARROW) {
+        //player.distance = player.distance + speed;
+        //player.player.x = player.distance;
+
+        player.player[player.index].velocityX = speed;
+        player.updateplayerinfo();
+        touches = [];
+
+      }
+      if (player.player[player.index].y === 401.55 || player.player[player.index].y < 164 && player.player[player.index].y > 162){
+      if (keyCode === UP_ARROW) {
+        jump.play();
+        player.player[player.index].velocityY = -7
+        player.updateplayerinfo();
+        touches = [];
+
+      }
+    }
+      /* if (keyCode === DOWN_ARROW) {
+         jump.play();  
+         player.player.velocityY = 10
+   
+       }*/
+    }
+
+  }
+
+}
+
+
+function mytouchfunction() {
+
+  if (gameState === "play") {
+
+    if (out === "false") {
+      if (player.player[player.index].y === 401.55 || player.player[player.index].y < 164 && player.player[player.index].y > 162){
+      jump.play();
+      player.player[player.index].velocityY = -7
+      player.updateplayerinfo();
+      touches = [];
+
+      }
+      player.player[player.index].velocityX = speed;
+      player.updateplayerinfo();
+      touches = [];
+      phone = "true"
+      
+    }
+  }
+}
 function respawn() {
 
 
